@@ -1,28 +1,56 @@
-import { useState } from 'react'
+import Hero from "./components/Hero";
+import Problem from "./components/Problem";
+import Solution from "./components/Solution";
+import ResultsCTA from "./components/ResultsCTA";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const handleDiscoveryClick = () => {
+    const el = document.getElementById("contact");
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
+    <div className="min-h-screen bg-white font-sans text-black">
+      <Hero onPrimaryCTAClick={handleDiscoveryClick} />
+      <Problem />
+      <Solution />
+      <ResultsCTA />
+
+      <footer className="border-t border-black/10 bg-white">
+        <div className="mx-auto max-w-7xl px-6 py-12">
+          <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-sm font-medium text-black/60">AICHITECT</p>
+              <p className="mt-1 text-lg font-semibold text-black">Know more, risk less, and simply build.</p>
+              <p className="mt-3 text-sm text-black/60">London, United Kingdom</p>
+            </div>
+            <div className="space-y-2">
+              <a href="mailto:contact@aichitect.com" className="block text-sm text-black/80 hover:text-black">
+                contact@aichitect.com
+              </a>
+              <div className="flex items-center gap-4 text-sm">
+                <a
+                  href="#"
+                  className="text-black/70 underline-offset-4 hover:text-black hover:underline"
+                  aria-label="LinkedIn"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="#"
+                  className="text-black/70 underline-offset-4 hover:text-black hover:underline"
+                  aria-label="X"
+                >
+                  X
+                </a>
+              </div>
+              <p className="pt-2 text-xs text-black/50">© {new Date().getFullYear()} AICHITECT. All rights reserved.</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </footer>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
